@@ -1,0 +1,62 @@
+20:59:14 INFO  : Registering command handlers for Vitis TCF services
+20:59:14 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Xilinx\Vitis\project_3\workspace\temp_xsdb_launch_script.tcl
+20:59:16 INFO  : XSCT server has started successfully.
+20:59:16 INFO  : plnx-install-location is set to ''
+20:59:16 INFO  : Successfully done setting XSCT server connection channel  
+20:59:16 INFO  : Successfully done query RDI_DATADIR 
+20:59:16 INFO  : Successfully done setting workspace for the tool. 
+20:59:17 INFO  : Platform repository initialization has completed.
+21:00:06 INFO  : Result from executing command 'getProjects': top
+21:00:06 INFO  : Result from executing command 'getPlatforms': 
+21:00:06 WARN  : An unexpected exception occurred in the module 'platform project logging'
+21:00:06 INFO  : Platform 'top' is added to custom repositories.
+21:00:14 INFO  : Platform 'top' is added to custom repositories.
+21:04:51 INFO  : Result from executing command 'getProjects': top
+21:04:51 INFO  : Result from executing command 'getPlatforms': top|C:/Xilinx/Vitis/project_3/workspace/top/export/top/top.xpfm
+21:04:52 INFO  : Checking for BSP changes to sync application flags for project 'project_3'...
+21:05:33 INFO  : Checking for BSP changes to sync application flags for project 'project_3'...
+21:05:41 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:05:41 INFO  : Jtag cable 'Xilinx TUL 1234-tulA' is selected.
+21:05:41 INFO  : 'jtag frequency' command is executed.
+21:05:41 INFO  : Context for 'APU' is selected.
+21:05:41 INFO  : System reset is completed.
+21:05:44 INFO  : 'after 3000' command is executed.
+21:05:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}' command is executed.
+21:05:47 INFO  : Device configured successfully with "C:/Xilinx/Vitis/project_3/workspace/project_3/_ide/bitstream/top.bit"
+21:05:47 INFO  : Context for 'APU' is selected.
+21:05:47 INFO  : Hardware design and registers information is loaded from 'C:/Xilinx/Vitis/project_3/workspace/top/export/top/hw/top.xsa'.
+21:05:47 INFO  : 'configparams force-mem-access 1' command is executed.
+21:05:47 INFO  : Context for 'APU' is selected.
+21:05:47 INFO  : Sourcing of 'C:/Xilinx/Vitis/project_3/workspace/project_3/_ide/psinit/ps7_init.tcl' is done.
+21:05:47 INFO  : 'ps7_init' command is executed.
+21:05:47 INFO  : 'ps7_post_config' command is executed.
+21:05:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:05:47 INFO  : The application 'C:/Xilinx/Vitis/project_3/workspace/project_3/Debug/project_3.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:05:47 INFO  : 'configparams force-mem-access 0' command is executed.
+21:05:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx TUL 1234-tulA" && level==0 && jtag_device_ctx=="jsn-TUL-1234-tulA-23727093-0"}
+fpga -file C:/Xilinx/Vitis/project_3/workspace/project_3/_ide/bitstream/top.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Xilinx/Vitis/project_3/workspace/top/export/top/hw/top.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Xilinx/Vitis/project_3/workspace/project_3/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Xilinx/Vitis/project_3/workspace/project_3/Debug/project_3.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:05:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:05:47 INFO  : 'con' command is executed.
+21:05:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:05:47 INFO  : Disconnected from the channel tcfchan#2.
